@@ -8,31 +8,28 @@
 
 <style>
 
-
-@keyframes click {
+  @keyframes multi {
     0%   {background-color:red; left:0px; top:0px;}
     25%  {background-color:yellow; left:200px; top:0px;}
     50%  {background-color:blue; left:200px; top:200px;}
     75%  {background-color:green; left:0px; top:200px;}
     100% {background-color:red; left:0px; top:0px;}
   }
-
-  @keyframes up {
-    0%   {background-color:red; left:0px; top:0px;}
-    25%  {background-color:yellow; left:200px; top:0px;}
-    50%  {background-color:blue; left:200px; top:200px;}
-    75%  {background-color:green; left:0px; top:200px;}
-    100% {background-color:red; left:0px; top:0px;}
-  }
-
-  @keyframes pressure {
-    0%   {background-color:red; left:0px; top:0px;}
-    25%  {background-color:yellow; left:200px; top:0px;}
-    50%  {background-color:blue; left:200px; top:200px;}
-    75%  {background-color:green; left:0px; top:200px;}
-    100% {background-color:red; left:0px; top:0px;}
-  }
-
+  
+  @keyframes pulse {
+    0% {
+         opacity: 1;
+         transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+         transform: scale(0.75);
+    }
+    100% {
+        opacity: 1;
+         transform: scale(1);
+    }
+}
 
 #touch_region {
    height: 100mm;
@@ -41,27 +38,21 @@
 
 .stuff {
     display: inline-block;
-    width: 75px;
-    height: 75px;
-    background: green;
+    width: 35mm;
+    height: 60mm;
     transition: opacity 0.5s;
 }
 
 .hidden {
-    opacity: 00;
+    opacity: 0;
 }
 
-@keyframes pulse {
-    0% {
-         opacity: 1;
-         transform: scale(1)
-    }
-    0% {
-         
-    }
-    0% {
-         
-    }
+.pulse {
+    animation: pulse 0.5s ease-in-out infinite;
+}
+
+.multi {
+    animation: multi 0.5s ease-in-out infinite;
 }
 
 </style>
@@ -70,10 +61,8 @@
 <body>
     <div id="touch_region"></div>
 
-    <div class="stuff"></div>
-
-    <!--<svg class="stuff" width="30mm" height="60mm" xmlns="http://www.w3.org/2000/svg"><path d="M46.353 49.503h13.101v104.38h-13.1zm0 0c0-4.538 0-7.942-3.93-9.076l1.31-2.27c5.24-9.076 7.86-18.152 5.24-27.229 5.241-1.134 9.171-3.403 13.102-6.807 1.31 12.48 5.24 24.96 2.62 35.171l-1.31 2.27c-3.93 3.403-3.93 4.538-3.93 7.941z"/><path d="m76.486 38.158-1.31-2.27c-1.31-2.269 0-4.538-2.62-6.807-1.31 6.808-2.62 5.673-10.481 6.808v1.134c3.93 1.135 9.17-2.269 11.79 0l1.31 1.135c1.311 3.403 1.311 2.269 1.311 0z"/><path d="M75.176 26.812v-1.134c-2.62-2.27-1.31-4.539-2.62-6.808-2.62 6.808-3.93 5.673-10.481 5.673h-1.31v2.27c3.93 0 9.17-2.27 11.79 0h1.31c1.31 4.537 1.31 3.403 1.31 0z"/><path d="m73.866 15.467-1.31-1.135c-1.31-2.27 0-4.538-2.62-6.807-1.31 6.807-2.62 5.672-10.482 5.672v2.27c3.93 1.134 9.171-2.27 11.791 0l1.31 1.134c1.31 3.404 1.31 2.27 1.31-1.134zm-34.063 4.538 1.31-1.135 1.31-6.807v-1.135c1.31 6.808 3.93 6.808 10.48 6.808v1.134c-3.93 1.135-9.17-2.269-10.48 0l-1.31 1.135c-1.31 3.403-1.31 2.269-1.31 0zm-2.62 12.48v-2.27c2.62-1.134 1.31-4.537 2.62-5.672v-1.135c1.31 6.808 3.93 6.808 10.48 6.808v1.134c-3.93 1.135-9.17-2.269-11.79 0v1.135c-1.31 3.404-1.31 2.269-1.31 0zm48.474 187.202c-10.481-2.27-18.342-6.807-27.513-7.942-9.17-2.269-31.443 11.346-37.993 5.673-1.31-4.538 5.24-15.884 6.55-20.422 2.62-9.077 2.62-14.75 2.62-22.691 0-11.346-5.24-19.288-10.48-28.364-1.31-12.48 5.24-30.633 18.341-34.037-2.62 13.615 0 43.113 9.171 22.691v-2.269l1.31 3.404v3.403h11.791c11.791 18.153 20.962-3.403 22.272-19.287 3.93 1.134 7.861 5.673 10.481 9.076 2.62 2.27 2.62 7.942 1.31 12.48-11.79 28.364-22.272 46.517-3.93 70.343 2.62 6.807 5.24 9.077-3.93 7.942z"/></svg>
-    -->
+    <svg class="stuff" width="30mm" height="60mm" xmlns="http://www.w3.org/2000/svg"><path d="M46.353 49.503h13.101v104.38h-13.1zm0 0c0-4.538 0-7.942-3.93-9.076l1.31-2.27c5.24-9.076 7.86-18.152 5.24-27.229 5.241-1.134 9.171-3.403 13.102-6.807 1.31 12.48 5.24 24.96 2.62 35.171l-1.31 2.27c-3.93 3.403-3.93 4.538-3.93 7.941z"/><path d="m76.486 38.158-1.31-2.27c-1.31-2.269 0-4.538-2.62-6.807-1.31 6.808-2.62 5.673-10.481 6.808v1.134c3.93 1.135 9.17-2.269 11.79 0l1.31 1.135c1.311 3.403 1.311 2.269 1.311 0z"/><path d="M75.176 26.812v-1.134c-2.62-2.27-1.31-4.539-2.62-6.808-2.62 6.808-3.93 5.673-10.481 5.673h-1.31v2.27c3.93 0 9.17-2.27 11.79 0h1.31c1.31 4.537 1.31 3.403 1.31 0z"/><path d="m73.866 15.467-1.31-1.135c-1.31-2.27 0-4.538-2.62-6.807-1.31 6.807-2.62 5.672-10.482 5.672v2.27c3.93 1.134 9.171-2.27 11.791 0l1.31 1.134c1.31 3.404 1.31 2.27 1.31-1.134zm-34.063 4.538 1.31-1.135 1.31-6.807v-1.135c1.31 6.808 3.93 6.808 10.48 6.808v1.134c-3.93 1.135-9.17-2.269-10.48 0l-1.31 1.135c-1.31 3.403-1.31 2.269-1.31 0zm-2.62 12.48v-2.27c2.62-1.134 1.31-4.537 2.62-5.672v-1.135c1.31 6.808 3.93 6.808 10.48 6.808v1.134c-3.93 1.135-9.17-2.269-11.79 0v1.135c-1.31 3.404-1.31 2.269-1.31 0zm48.474 187.202c-10.481-2.27-18.342-6.807-27.513-7.942-9.17-2.269-31.443 11.346-37.993 5.673-1.31-4.538 5.24-15.884 6.55-20.422 2.62-9.077 2.62-14.75 2.62-22.691 0-11.346-5.24-19.288-10.48-28.364-1.31-12.48 5.24-30.633 18.341-34.037-2.62 13.615 0 43.113 9.171 22.691v-2.269l1.31 3.404v3.403h11.791c11.791 18.153 20.962-3.403 22.272-19.287 3.93 1.134 7.861 5.673 10.481 9.076 2.62 2.27 2.62 7.942 1.31 12.48-11.79 28.364-22.272 46.517-3.93 70.343 2.62 6.807 5.24 9.077-3.93 7.942z"/></svg>
+    
     <div id="output"></div>
 </body>
 
@@ -91,11 +80,19 @@ document.addEventListener("click", e => {
 
 
 logo.addEventListener("touchstart", e => {
+    console.log("touches", e.touches.length)
     e.preventDefault()
     console.log("start")
     initialX = e.touches[0].clientX;
     initialY = e.touches[0].clientY;
     initialTime = new Date();
+    for(let touch of e.targetTouches) {
+        console.log("Touch pressure", touch.force);
+    }
+    if (e.touches.length >= 3) {
+        const aaaa = document.querySelector(".stuff")
+        aaaa.classList.toggle("multi")
+    }
 })
 
 logo.addEventListener("touchmove", e => {
@@ -110,7 +107,8 @@ logo.addEventListener("touchend", e => {
 
     if (deltaY <= -100 && deltaTime <= 300) {
         console.log("UP")
-
+        const aaaa = document.querySelector(".stuff")
+        aaaa.classList.toggle("pulse")
     }
 })
 </script>
